@@ -1,0 +1,85 @@
+<mvc:View controllerName="hzns.chatterproject.controller.MainView"
+    class="sapUiSizeCompact"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:unified="sap.ui.unified"
+    xmlns:uxap="sap.uxap"
+    xmlns="sap.m">
+
+    <Page id="page" title="Project Collaboration Demo" showNavButton="true" showHeader="true" showFooter="true" navButtonPress="onNavButtonPress">
+        <content>
+        <HBox id="HB1">
+            <VBox id="VB0" width="5%">
+            </VBox>
+            <VBox id="VB10" width="95%">
+
+            <layout:HorizontalLayout id="_HeadersSection" visible="true" class="sapUiResponsiveContentPadding">
+            <VBox id="hdVB1">
+                    <Label id="hdLB1" text="Displaying messages since date: " design="Bold" width="100%" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                    <DatePicker id="idSinceDate" enabled="true" displayFormat="{i18n>default.DateFormat}" width="500px"/>
+            </VBox>
+
+            </layout:HorizontalLayout>
+            <Title id = "Title1" text="Project Collaborations" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" class="sapUiSmallMarginBottom"/>
+            <Table id="idSearchResultTable" width="auto" noDataText="No Data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{path:'ProjectsModel>/value'}">
+                <columns>
+                    <Column id="ProjIdColumn" width="12%" hAlign="Left" vAlign="Top" visible="true">
+                        <header>
+                            <Text id="ProjIdTxt" text="Project ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                    </Column>
+                    <Column id="MsgFromColumn" width="12%" hAlign="Left" vAlign="Top" visible="true">
+                        <header>
+                            <Text id="MsgFromTxt" text="Message From" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                    </Column>
+                    <Column id="ApprovalStepColumn" width="6%" hAlign="Left" vAlign="Top" visible="true">
+                        <header>
+                            <Text id="ApprovalStepTxt" text="At Step" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                    </Column>
+                    <Column id="MsgAtColumn" width="12%" hAlign="Left" vAlign="Top" visible="true">
+                        <header>
+                            <Text id="MsgAtTxt" text="Messaged At" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                    </Column>
+                    <Column id="MsgColumn" width="58%" hAlign="Left" vAlign="Top" visible="true">
+                        <header>
+                            <Text id="Message" text="Project ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="ColListItmId" type="Navigation" press="onPressRowItem">
+                        <cells>
+                            <Text id="Txt1" text="{ProjectsModel>ProjectId}" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text id="Txt2" text="{ProjectsModel>FromUserId}" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text id="Txt3" text="{ProjectsModel>StepId}" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text id="Txt4" text="{ProjectsModel>createdAt}" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text id="Txt5" text="{ProjectsModel>Message}" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <VBox id="VB1">
+                <HBox id="HBOX10" width="100%">
+                    <Label id="LABLEID10" text="Project ID: " design="Bold" />
+                    <Input id="ProjectID" editable="false" width="200px"/>
+                </HBox>
+                <Label id="LABLEID20" text="Message Chain:" width="80%" design="Bold" />
+                <TextArea id="idInMessage" maxLength="2000" rows="8" width="900px" editable="false"/>
+
+                <Label id="LABLEID30" text="My Message:" width="80%" design="Bold"/>
+                <TextArea id="idMyMessage" maxLength="200" rows="5" width="900px"/>
+
+            </VBox>
+
+             <Button id="idPostMessageBtn" text="Post Message" type="Emphasized" press="onPostMessage"/>
+            </VBox>
+        </HBox>
+    	</content>
+    </Page>
+</mvc:View>
